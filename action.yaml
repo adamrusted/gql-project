@@ -6,7 +6,7 @@ inputs:
   repo-token:
     description: "The repo token you'd like to use"
     required: true
-    default: ${{ secrets.GITHUB_TOKEN }}
+    default: ${{ github.token }}
   org:
     description: "The organisation we should look for the project against"
     required: false
