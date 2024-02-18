@@ -3,7 +3,7 @@ description: ""
 author: "Adam Rusted"
 
 inputs:
-  repo-token:
+  repo_token:
     description: "The repo token you'd like to use"
     required: true
     default: ${{ github.token }}
