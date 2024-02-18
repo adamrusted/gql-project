@@ -7,6 +7,12 @@ inputs:
     description: "The repo token you'd like to use"
     required: true
     default: ${{ github.token }}
+  project:
+    description: "The URL of the project you'd like to add this PR to."
+    required: true
+  column_name:
+    description: "Which header you'd like the PR to sit under"
+    required: false
 
 runs:
   using: "node20"
