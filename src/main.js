@@ -38,7 +38,7 @@ const run = async () => {
         Org: org,
         Proj: project,
         headers: {
-          Authorization: `Bearer`,
+          Authorization: `Bearer ${token}`,
           "Content-Type": "application/json",
         },
       }
