@@ -7,12 +7,20 @@ inputs:
     description: "The repo token you'd like to use"
     required: true
     default: ${{ github.token }}
-  project:
-    description: "The URL of the project you'd like to add this PR to."
-    required: true
-  column_name:
-    description: "Which header you'd like the PR to sit under"
+  org:
+    description: "The organisation we should look for the project against"
     required: false
+  project:
+    description: "The number of the project you'd like to add this PR to."
+    required: true
+  field_name:
+    description: "The field we should look to categorise the PR under."
+    required: true
+    default: Status
+  option_name:
+    description: "Which option you'd like the PR to sit under"
+    required: true
+    default: Unprioritised
 
 runs:
   using: "node20"
