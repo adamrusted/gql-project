@@ -8,40 +8,40 @@ const run = async () => {
     const org = core.getInput("org");
     const field = core.getInput("field_name", { required: true });
     const option = core.getInput("option_name", { required: true });
-    console.log(token, project, org, field, option);
-    //     const client = github.getOctokit(token);
-    //     console.log(github.context.payload.pull_request.number);
-    //     const getProject = await client.graphql(
-    //       `query GetProject {
-    //   organization(login: ${org}) {
-    //     projectV2(number: ${project}) {
-    //       fields(first: 20) {
-    //         nodes {
-    //           ... on ProjectV2Field {
-    //             id
-    //             name
-    //           }
-    //           ... on ProjectV2SingleSelectField {
-    //             id
-    //             name
-    //             options {
-    //               id
-    //               name
-    //             }
-    //           }
-    //         }
-    //       }
-    //     }
-    //   }
-    // }`,
-    //       {
-    //         headers: {
-    //           Authorization: `Bearer ${token}`,
-    //           "Content-Type": "application/json",
-    //         },
-    //       }
-    //     );
-    //     console.log(getProject);
+    // console.log(token, project, org, field, option);
+    const client = github.getOctokit(token);
+    console.log(github.context.payload.pull_request.number);
+    const getProject = await client.graphql(
+      `query GetProject {
+      organization(login: ${org}) {
+        projectV2(number: ${project}) {
+          fields(first: 20) {
+            nodes {
+              ... on ProjectV2Field {
+                id
+                name
+              }
+              ... on ProjectV2SingleSelectField {
+                id
+                name
+                options {
+                  id
+                  name
+                }
+              }
+            }
+          }
+        }
+      }
+    }`,
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+          "Content-Type": "application/json",
+        },
+      }
+    );
+    console.log(getProject);
   } catch (err) {
     core.setFailed(err.message);
   }
